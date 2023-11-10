@@ -6,4 +6,26 @@
     android:layout_height="match_parent"
     android:background="@color/Background"
     android:orientation="vertical"
-    tools:context=".AboutMeFragment" />
+    tools:context=".AboutMeFragment" >
+
+    <TextView
+        android:id="@+id/tvAboutMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:background="@color/Nav_Back"
+        android:hapticFeedbackEnabled="false"
+        android:text="Next" />
+
+</LinearLayout>
