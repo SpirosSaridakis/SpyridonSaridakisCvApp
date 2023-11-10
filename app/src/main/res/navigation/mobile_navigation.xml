@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.spyridonsaridakiscvapp.AboutMeFragment"
-        android:label="About me"
+        android:label="About Me"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -22,4 +22,9 @@
         android:name="com.example.spyridonsaridakiscvapp.VolunteeringFragment"
         android:label="Volunteering"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_work"
+        android:name="com.example.spyridonsaridakiscvapp.WorkExperienceFragment"
+        android:label="Work Experience"
+        tools:layout="@layout/fragment_work_experience" />
 </navigation>

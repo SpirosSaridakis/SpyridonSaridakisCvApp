@@ -20,7 +20,7 @@ public class AboutMeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textHome;
+        //final TextView textView = binding.textHome;
         return root;
     }
 
