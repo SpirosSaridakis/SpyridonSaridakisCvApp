@@ -35,7 +35,7 @@ public class AboutMeFragment extends Fragment {
                 "which is near the port of Piraeus. From a young age i started fiddling around with computers and i built my" +
                 " first computer when i was about 13 years old. After that, i enrolled at the university of West Attica and " +
                 "i have been studying there since 2019 at the Department of Informatics and Computer Engineering","As a student i have" +
-                " been involved in two university research teams. TALOS UVAs which is a research group whose area of study is un-manned" +
+                " been involved in two university research teams. TALOS UVS which is a research group whose area of study is un-manned" +
                 " aerial vehicles (also known as drones),in which i participated in a project whose goal was building a black box for drones. " +
                 "I also joined the IEEE student branch which focuses more on software development and" +
                 " computer networks.","I also participated in the ERASMUS+ programme. I joined the Cyprus University of Technology that is" +

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,47 +14,72 @@ import com.example.spyridonsaridakiscvapp.databinding.FragmentGalleryBinding;
 public class AcademicFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
-    public Boolean isTopFull=false;
-    public static final int HEIGHT =350;
-    public Boolean isBottomFull=false;
+    public Boolean isUniwaFull =false;
+    public static final int HEIGHT =320;
+    public Boolean isCutFull=false;
+    public Boolean isTalosFull=false;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        View top = root.findViewById(R.id.containerUniwa);
-        View bottom = root.findViewById(R.id.containerCut);
-        top.setOnClickListener(new View.OnClickListener() {
+        View uniwa = root.findViewById(R.id.containerUniwa);
+        View cut = root.findViewById(R.id.containerCut);
+        View talos = root.findViewById(R.id.containerTalos);
+
+        uniwa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Modify layout parameters on click
-                if(!isTopFull){
-                    expandSelected(top);
-                    minimize(bottom);
-                    isTopFull=true;
+                if(!isUniwaFull){
+                    expandSelected(uniwa);
+                    minimize(talos);
+                    minimize(cut);
+                    isUniwaFull = true;
                 }else{
-                    returnToOriginal(top);
-                    returnToOriginal(bottom);
-                    isTopFull=false;
+                    returnToOriginal(uniwa);
+                    returnToOriginal(talos);
+                    returnToOriginal(cut);
+                    isUniwaFull =false;
                 }
             }
         });
 
-        bottom.setOnClickListener(new View.OnClickListener() {
+        cut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Modify layout parameters on click
 
-                if(!isBottomFull){
-                    expandSelected(bottom);
-                    minimize(top);
-                    isBottomFull=true;
+                if(!isCutFull){
+                    expandSelected(cut);
+                    minimize(talos);
+                    minimize(uniwa);
+                    isCutFull=true;
                 }else{
-                    returnToOriginal(bottom);
-                    returnToOriginal(top);
-                    isBottomFull=false;
+                    returnToOriginal(cut);
+                    returnToOriginal(talos);
+                    returnToOriginal(uniwa);
+                    isCutFull=false;
                 }
             }
+        });
+
+        talos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isTalosFull){
+                    expandSelected(talos);
+                    minimize(cut);
+                    minimize(uniwa);
+                    isTalosFull=true;
+                }else{
+                    returnToOriginal(talos);
+                    returnToOriginal(cut);
+                    returnToOriginal(uniwa);
+                    isTalosFull=false;
+                }
+            }
+
         });
 
         return root;
@@ -82,7 +106,7 @@ public class AcademicFragment extends Fragment {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 HEIGHT
         );
-        param.setMargins(15,15,15,15);
+        param.setMargins(25,25,25,25);
         v.setLayoutParams(param);
     }
 
