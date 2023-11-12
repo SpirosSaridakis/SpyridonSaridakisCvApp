@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Navigate the app using the navigation lines on the top left of the screen", Snackbar.LENGTH_LONG)
+                        .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
             }
         });
