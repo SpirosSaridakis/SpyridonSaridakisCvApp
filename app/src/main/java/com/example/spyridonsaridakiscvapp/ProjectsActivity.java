@@ -84,7 +84,7 @@ public class ProjectsActivity extends AppCompatActivity {
         cbP2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                changeWebViewHeight(wbp2);
+                changeWebViewHeight(wbp3);
             }
         });
     }
