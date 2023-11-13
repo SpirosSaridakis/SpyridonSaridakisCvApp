@@ -27,4 +27,9 @@
         android:name="com.example.spyridonsaridakiscvapp.WorkExperienceFragment"
         android:label="Work Experience"
         tools:layout="@layout/fragment_work_experience" />
+    <fragment
+        android:id="@+id/nav_places"
+        android:name="com.example.spyridonsaridakiscvapp.PlacesFragment"
+        android:label="Places"
+        tools:layout="@layout/fragment_places" />
 </navigation>
