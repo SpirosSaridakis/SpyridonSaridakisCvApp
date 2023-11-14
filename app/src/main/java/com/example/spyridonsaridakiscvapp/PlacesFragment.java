@@ -1,5 +1,6 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -66,8 +68,16 @@ public class PlacesFragment extends Fragment {
                 "I am currently working on it, as mentioned in other sections of this app, i have been to " +
                 "Greece and Cyprus. By choosing one of them with the buttons below, and pressing the show" +
                 " me button, you will see the places i have been in the country you chose.");
+        Button btnLoadMap = view.findViewById(R.id.btnShow);
 
+        btnLoadMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getActivity(), MapsHostActivity.class);
 
+                startActivity(in);
+            }
+        });
         return view;
     }
 }
