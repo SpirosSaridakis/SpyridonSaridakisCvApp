@@ -26,7 +26,7 @@
             android:title="Places" />
         <item
             android:id="@+id/nav_projects"
-            android:icon="@drawable/pin"
+            android:icon="@drawable/projects"
             android:title="Projects" />
 
     </group>
