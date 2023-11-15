@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -29,6 +30,12 @@ public class MapsHostActivity extends AppCompatActivity {
 
         binding = ActivityMapsHost2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        Intent in = getIntent();
+        Bundle bund = in.getExtras();
+        String country = bund.getString("country");
+        String code = bund.getString("code");
+        TextView tv = findViewById(R.id.tvMapsCountry);
+        tv.setText(country);
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override

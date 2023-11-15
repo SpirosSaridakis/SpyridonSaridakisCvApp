@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -65,19 +67,41 @@ public class PlacesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_places, container, false);
         TextView tvTitle = view.findViewById(R.id.tvPlacesTitle);
         tvTitle.setText("I have not traveled to many countries so far and that is one of my big regrets. " +
-                "I am currently working on it, as mentioned in other sections of this app, i have been to " +
-                "Greece and Cyprus. By choosing one of them with the buttons below, and pressing the show" +
-                " me button, you will see the places i have been in the country you chose.");
+                "I am currently working on it, as mentioned in other sections of this app, I have been to " +
+                "Greece and Cyprus. By choosing one of them with the buttons below and pressing the show" +
+                " me button, you will see the places I have been in the country you chose.");
         Button btnLoadMap = view.findViewById(R.id.btnShow);
+        RadioGroup rgGroup = view.findViewById(R.id.rgGroup);
 
         btnLoadMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = new Intent(getActivity(), MapsHostActivity.class);
-
-                startActivity(in);
+                int id = rgGroup.getCheckedRadioButtonId(); // Move this line inside the onClick method
+                Boolean canSend = false;
+                String country = "";
+                String code = "";
+                if (id == R.id.rbGreece) {
+                    country = "Greece";
+                    code = "1";
+                    canSend = true;
+                } else if (id == R.id.rbCyprus) {
+                    country = "Cyprus";
+                    code = "2";
+                    canSend = true;
+                }
+                if (canSend) {
+                    Intent in = new Intent(getActivity(), MapsHostActivity.class);
+                    Bundle bund = new Bundle();
+                    bund.putString("country", country);
+                    bund.putString("code", code);
+                    in.putExtras(bund);
+                    startActivity(in);
+                } else {
+                    Toast.makeText(getContext(), "Please select a country", Toast.LENGTH_LONG).show();
+                }
             }
         });
         return view;
     }
+
 }
