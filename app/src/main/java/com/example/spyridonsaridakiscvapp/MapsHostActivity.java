@@ -30,12 +30,10 @@ public class MapsHostActivity extends AppCompatActivity {
         binding = ActivityMapsHost2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        setSupportActionBar(binding.toolbar);
-
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Press home to go back to the selection screen", Snackbar.LENGTH_LONG)
                         .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
             }
@@ -53,16 +51,12 @@ public class MapsHostActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        /*
+
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_learn) {
-            Intent in = new Intent(this,LearningActivity.class);
-            startActivity(in);
-        }else if(id == R.id.action_train){
-            Intent in = new Intent(this,TrainingActivity.class);
-            startActivity(in);
+        if (id == R.id.menu_home) {
+            finish();
         }
-        */
+
         return super.onOptionsItemSelected(item);
     }
 
