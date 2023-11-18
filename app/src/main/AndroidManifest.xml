@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpyridonSaridakisCvApp"
         tools:targetApi="31">
+        <activity
+            android:name=".CountryInformationActivity"
+            android:exported="false" />
         <activity
             android:name=".MapsHostActivity"
             android:exported="false"
@@ -38,8 +40,8 @@
 
         <activity
             android:name=".ProjectsActivity"
-            android:label="Projects"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Projects" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

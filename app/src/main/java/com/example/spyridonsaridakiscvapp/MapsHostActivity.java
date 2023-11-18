@@ -21,8 +21,12 @@ import com.example.spyridonsaridakiscvapp.databinding.ActivityMapsHost2Binding;
 
 public class MapsHostActivity extends AppCompatActivity {
 
+    private static final String CODEFORINFO="";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMapsHost2Binding binding;
+    private MapsFragment map = new MapsFragment();
+
+    private static int countryDisplayed =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,19 @@ public class MapsHostActivity extends AppCompatActivity {
         String code = bund.getString("code");
         TextView tv = findViewById(R.id.tvMapsCountry);
         tv.setText(country);
+        if(country.equals("Greece")){
+            Bundle mapsBund = new Bundle();
+            int countryCode = 1;
+            mapsBund.putInt("code", countryCode);
+            map.setArguments(mapsBund);
+        }else if(country.equals("Cyprus")){
+            Bundle mapsBund = new Bundle();
+            int countryCode = 2;
+            mapsBund.putInt("code", countryCode);
+            map.setArguments(mapsBund);
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.mapContainer,map).commit();
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,6 +79,10 @@ public class MapsHostActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_home) {
             finish();
+        } else if (id == R.id.menu_information) {
+            Intent in = new Intent(this, CountryInformationActivity.class);
+            //in.putExtra(CODEFORINFO,countryDisplayed);
+            startActivity(in);
         }
 
         return super.onOptionsItemSelected(item);

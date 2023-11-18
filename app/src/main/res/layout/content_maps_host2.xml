@@ -17,7 +17,7 @@
         android:textSize="24dp" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/mapContainer"
         android:name="com.example.spyridonsaridakiscvapp.MapsFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
