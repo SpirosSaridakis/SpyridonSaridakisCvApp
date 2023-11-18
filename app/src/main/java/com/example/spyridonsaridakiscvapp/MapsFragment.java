@@ -49,8 +49,19 @@ public class MapsFragment extends Fragment {
                 }else if(country==2){
                     location = new LatLng( 35.1855,33.3822);
                     LatLng m1 = new LatLng(34.7071,33.0226);
+                    LatLng m2 = new LatLng(34.9230,33.6340);
+                    LatLng m3 = new LatLng(34.7744,32.4232);
+                    LatLng m4 = new LatLng(34.8499,32.7999);
+                    LatLng m5 = new LatLng(34.9838,32.7412);
+                    LatLng m6 = new LatLng(34.9893,33.9962);
                     googleMap.addMarker(new MarkerOptions().position(location).title("Marker in Nicosia"));
                     googleMap.addMarker(new MarkerOptions().position(m1).title("Marker in Limassol"));
+                    googleMap.addMarker(new MarkerOptions().position(m2).title("Marker in Larnaca"));
+                    googleMap.addMarker(new MarkerOptions().position(m3).title("Marker in Paphos"));
+                    googleMap.addMarker(new MarkerOptions().position(m4).title("Marker in Omodos"));
+                    googleMap.addMarker(new MarkerOptions().position(m5).title("Marker in Kikoy monastery"));
+                    googleMap.addMarker(new MarkerOptions().position(m6).title("Marker in Ayia Napa"));
+
                     zoom = 8;
                 }
                 CameraPosition cameraPosition = new CameraPosition.Builder()
