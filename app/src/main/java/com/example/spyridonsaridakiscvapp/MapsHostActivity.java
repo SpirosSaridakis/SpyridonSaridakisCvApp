@@ -21,7 +21,7 @@ import com.example.spyridonsaridakiscvapp.databinding.ActivityMapsHost2Binding;
 
 public class MapsHostActivity extends AppCompatActivity {
 
-    private static final String CODEFORINFO="";
+    public static final String CODEFORINFO= "";
     private AppBarConfiguration appBarConfiguration;
     private ActivityMapsHost2Binding binding;
     private MapsFragment map = new MapsFragment();
@@ -45,11 +45,13 @@ public class MapsHostActivity extends AppCompatActivity {
             int countryCode = 1;
             mapsBund.putInt("code", countryCode);
             map.setArguments(mapsBund);
+            countryDisplayed=1;
         }else if(country.equals("Cyprus")){
             Bundle mapsBund = new Bundle();
             int countryCode = 2;
             mapsBund.putInt("code", countryCode);
             map.setArguments(mapsBund);
+            countryDisplayed = 2;
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.mapContainer,map).commit();
@@ -81,7 +83,8 @@ public class MapsHostActivity extends AppCompatActivity {
             finish();
         } else if (id == R.id.menu_information) {
             Intent in = new Intent(this, CountryInformationActivity.class);
-            //in.putExtra(CODEFORINFO,countryDisplayed);
+            String code = ""+countryDisplayed;
+            in.putExtra(CODEFORINFO,code);
             startActivity(in);
         }
 
