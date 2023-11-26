@@ -1,5 +1,6 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.spyridonsaridakiscvapp.databinding.FragmentGalleryBinding;
 
@@ -18,11 +20,16 @@ public class AcademicFragment extends Fragment {
     public static final int HEIGHT =320;
     public Boolean isCutFull=false;
     public Boolean isTalosFull=false;
+    public LifeCycleHandler handler = new LifeCycleHandler();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        handler.getContext(getContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            fragmentManager.registerFragmentLifecycleCallbacks(handler,false);
+        }
         View uniwa = root.findViewById(R.id.containerUniwa);
         View cut = root.findViewById(R.id.containerCut);
         View talos = root.findViewById(R.id.containerTalos);

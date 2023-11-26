@@ -1,6 +1,7 @@
 package com.example.spyridonsaridakiscvapp;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -11,11 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+
 
 import com.example.spyridonsaridakiscvapp.databinding.ActivityMapsHost2Binding;
 
@@ -27,13 +25,17 @@ public class MapsHostActivity extends AppCompatActivity {
     private MapsFragment map = new MapsFragment();
 
     private static int countryDisplayed =0;
+    public LifeCycleHandler handler = new LifeCycleHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMapsHost2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        handler.getContext(getApplicationContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            registerActivityLifecycleCallbacks(handler);
+        }
         Intent in = getIntent();
         Bundle bund = in.getExtras();
         String country = bund.getString("country");

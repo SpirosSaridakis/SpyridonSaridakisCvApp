@@ -1,5 +1,6 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.spyridonsaridakiscvapp.databinding.FragmentHomeBinding;
 
@@ -20,11 +22,17 @@ public class AboutMeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     public int counter =1;
+    public LifeCycleHandler handler = new LifeCycleHandler();
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        handler.getContext(getContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+            fragmentManager.registerFragmentLifecycleCallbacks(handler,false);
+        }
         TextView tv = root.findViewById(R.id.tvAboutMe);
         TextView tvTitle = root.findViewById(R.id.tvTitle);
 

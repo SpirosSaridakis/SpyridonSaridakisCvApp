@@ -6,9 +6,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
-public class LifeCycleHandler implements Application.ActivityLifecycleCallbacks {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+public class LifeCycleHandler extends FragmentManager.FragmentLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 
     private Context context;
+
+    @Override
+    public void onActivityPreCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+        Application.ActivityLifecycleCallbacks.super.onActivityPreCreated(activity, savedInstanceState);
+    }
+
     @Override
     public void onActivityCreated(Activity activity, Bundle bundle) {
 
@@ -33,6 +44,13 @@ public class LifeCycleHandler implements Application.ActivityLifecycleCallbacks 
     public void onActivityStopped(Activity activity) {
         Intent in = new Intent(context,NotificationService.class);
         context.startService(in);
+    }
+
+    @Override
+    public void onFragmentStopped(@NonNull FragmentManager fm, @NonNull Fragment f) {
+        Intent in = new Intent(context,NotificationService.class);
+        context.startService(in);
+        super.onFragmentStopped(fm, f);
     }
 
     @Override

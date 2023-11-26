@@ -2,6 +2,7 @@ package com.example.spyridonsaridakiscvapp;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -39,28 +40,27 @@ public class NotificationService extends Service {
             //create the notification manager
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(channel);
+            Intent in = new Intent(getApplicationContext(), MainActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, in, PendingIntent.FLAG_IMMUTABLE);
 
             //create the notification
             NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "1")
-                    .setSmallIcon(android.R.drawable.btn_star)
-                    .setContentTitle("The application is running in the background")
-                    .setContentText("Please close the application in order to save resources")
+                    .setSmallIcon(android.R.drawable.stat_sys_warning)
+                    .setContentTitle("CV app is idle")
+                    .setContentText("The application has been running in the background")
+                    .setContentIntent(pendingIntent)
+                    .addAction(android.R.drawable.button_onoff_indicator_on, "Open App", pendingIntent)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-            //.addAction() for more points in the project
 
 
             NotificationManagerCompat notifyAdmin = NotificationManagerCompat.from(this);
             if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
                 return;
             }
             notifyAdmin.notify(1, notification.build());
+            Intent stopServiceIntent = new Intent(this, NotificationService.class);
+            stopService(stopServiceIntent);
+
         }
     }
 }
