@@ -23,7 +23,6 @@ public class ProjectsActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             registerActivityLifecycleCallbacks(handler);
         }
-
         Boolean isWbFull=false;
         WebView wb = findViewById(R.id.wvProfile);
         wb.setWebViewClient(new WebViewClient());
@@ -107,6 +106,9 @@ public class ProjectsActivity extends AppCompatActivity {
     }
 
     public void backToND(View v){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            unregisterActivityLifecycleCallbacks(handler);
+        }
         finish();
     }
 

@@ -17,16 +17,11 @@ public class VolunteeringFragment extends Fragment {
 
     private FragmentSlideshowBinding binding;
 
-    public LifeCycleHandler handler = new LifeCycleHandler();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            fragmentManager.registerFragmentLifecycleCallbacks(handler,false);
-        }
         final TextView textView = binding.textSlideshow;
         return root;
     }

@@ -50,7 +50,6 @@ public class LifeCycleHandler extends FragmentManager.FragmentLifecycleCallbacks
     public void onFragmentStopped(@NonNull FragmentManager fm, @NonNull Fragment f) {
         Intent in = new Intent(context,NotificationService.class);
         context.startService(in);
-        super.onFragmentStopped(fm, f);
     }
 
     @Override

@@ -25,6 +25,7 @@ public class MapsHostActivity extends AppCompatActivity {
     private MapsFragment map = new MapsFragment();
 
     private static int countryDisplayed =0;
+
     public LifeCycleHandler handler = new LifeCycleHandler();
 
     @Override
@@ -82,12 +83,19 @@ public class MapsHostActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.menu_home) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                unregisterActivityLifecycleCallbacks(handler);
+            }
             finish();
         } else if (id == R.id.menu_information) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                unregisterActivityLifecycleCallbacks(handler);
+            }
             Intent in = new Intent(this, CountryInformationActivity.class);
             String code = ""+countryDisplayed;
             in.putExtra(CODEFORINFO,code);
             startActivity(in);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);

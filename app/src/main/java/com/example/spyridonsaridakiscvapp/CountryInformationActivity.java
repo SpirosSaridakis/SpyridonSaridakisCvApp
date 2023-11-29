@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 
 public class CountryInformationActivity extends AppCompatActivity {
-
     public LifeCycleHandler handler = new LifeCycleHandler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,9 @@ public class CountryInformationActivity extends AppCompatActivity {
     }
 
     public void backToMap(View v){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            unregisterActivityLifecycleCallbacks(handler);
+        }
         finish();
     }
 }

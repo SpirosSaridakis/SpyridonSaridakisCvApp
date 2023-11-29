@@ -26,7 +26,6 @@ public class PlacesFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    public LifeCycleHandler handler = new LifeCycleHandler();
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -69,11 +68,6 @@ public class PlacesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_places, container, false);
-        handler.getContext(getContext());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-            fragmentManager.registerFragmentLifecycleCallbacks(handler,false);
-        }
         TextView tvTitle = view.findViewById(R.id.tvPlacesTitle);
         tvTitle.setText("I have not traveled to many countries so far and that is one of my big regrets. " +
                 "I am currently working on it, as mentioned in other sections of this app, I have been to " +
