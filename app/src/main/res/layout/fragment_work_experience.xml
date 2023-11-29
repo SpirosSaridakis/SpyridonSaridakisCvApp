@@ -8,6 +8,20 @@
     tools:context=".WorkExperienceFragment">
 
     <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30sp"
+        android:layout_marginTop="320dp"
+        android:layout_marginRight="30sp"
+        android:text="I worked as a customer service agent for NOVA, a telecommunications provider in Greece. I was responsible for:  \n\n• Phone payments. \n\n•SIM card activation.\n\n•Payment deadlines\n\n•Explaining the bill to customers"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
