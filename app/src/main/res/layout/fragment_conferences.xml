@@ -8,20 +8,20 @@
     tools:context=".CutAcademicFragment">
 
     <TextView
-        android:id="@+id/tvLogo2"
+        android:id="@+id/tvConf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="15dp"
         android:fontFamily="serif"
         android:text="Placeholder"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivCut"
-        app:layout_constraintStart_toEndOf="@+id/ivCut"
-        app:layout_constraintTop_toTopOf="@+id/ivCut" />
+        app:layout_constraintBottom_toBottomOf="@+id/ivConf"
+        app:layout_constraintStart_toEndOf="@+id/ivConf"
+        app:layout_constraintTop_toTopOf="@+id/ivConf" />
 
     <TextView
-        android:id="@+id/tvText2"
+        android:id="@+id/tvTextConf"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20sp"
@@ -35,16 +35,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCut"
+        app:layout_constraintTop_toBottomOf="@+id/ivConf"
         app:layout_constraintVertical_bias="0.023" />
 
     <ImageView
-        android:id="@+id/ivCut"
-        android:layout_width="123dp"
-        android:layout_height="112dp"
+        android:id="@+id/ivConf"
+        android:layout_width="100dp"
+        android:layout_height="92dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/cut"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/businessmeeting"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
