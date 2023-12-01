@@ -21,6 +21,8 @@ public class AcademicFragment extends Fragment {
     public Boolean isCutFull=false;
     public Boolean isTalosFull=false;
 
+    public Boolean isConfFull=false;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
@@ -28,6 +30,7 @@ public class AcademicFragment extends Fragment {
         View uniwa = root.findViewById(R.id.containerUniwa);
         View cut = root.findViewById(R.id.containerCut);
         View talos = root.findViewById(R.id.containerTalos);
+        View conf = root.findViewById(R.id.containerConferences);
 
         uniwa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,11 +40,13 @@ public class AcademicFragment extends Fragment {
                     expandSelected(uniwa);
                     minimize(talos);
                     minimize(cut);
+                    minimize(conf);
                     isUniwaFull = true;
                 }else{
                     returnToOriginal(uniwa);
                     returnToOriginal(talos);
                     returnToOriginal(cut);
+                    returnToOriginal(conf);
                     isUniwaFull =false;
                 }
             }
@@ -56,11 +61,13 @@ public class AcademicFragment extends Fragment {
                     expandSelected(cut);
                     minimize(talos);
                     minimize(uniwa);
+                    minimize(conf);
                     isCutFull=true;
                 }else{
                     returnToOriginal(cut);
                     returnToOriginal(talos);
                     returnToOriginal(uniwa);
+                    returnToOriginal(conf);
                     isCutFull=false;
                 }
             }
@@ -73,12 +80,34 @@ public class AcademicFragment extends Fragment {
                     expandSelected(talos);
                     minimize(cut);
                     minimize(uniwa);
+                    minimize(conf);
                     isTalosFull=true;
                 }else{
                     returnToOriginal(talos);
                     returnToOriginal(cut);
                     returnToOriginal(uniwa);
+                    returnToOriginal(conf);
                     isTalosFull=false;
+                }
+            }
+
+        });
+
+        conf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isConfFull){
+                    expandSelected(conf);
+                    minimize(cut);
+                    minimize(uniwa);
+                    minimize(talos);
+                    isConfFull=true;
+                }else{
+                    returnToOriginal(talos);
+                    returnToOriginal(cut);
+                    returnToOriginal(uniwa);
+                    returnToOriginal(conf);
+                    isConfFull=false;
                 }
             }
 
