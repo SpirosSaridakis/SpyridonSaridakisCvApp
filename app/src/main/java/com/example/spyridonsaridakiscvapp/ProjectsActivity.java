@@ -1,7 +1,8 @@
 package com.example.spyridonsaridakiscvapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Application;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,11 +14,15 @@ import android.widget.TextView;
 
 public class ProjectsActivity extends AppCompatActivity {
 
+    public LifeCycleHandler handler = new LifeCycleHandler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_projects);
-
+        handler.getContext(getApplicationContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            registerActivityLifecycleCallbacks(handler);
+        }
         Boolean isWbFull=false;
         WebView wb = findViewById(R.id.wvProfile);
         wb.setWebViewClient(new WebViewClient());
@@ -101,6 +106,9 @@ public class ProjectsActivity extends AppCompatActivity {
     }
 
     public void backToND(View v){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            unregisterActivityLifecycleCallbacks(handler);
+        }
         finish();
     }
 

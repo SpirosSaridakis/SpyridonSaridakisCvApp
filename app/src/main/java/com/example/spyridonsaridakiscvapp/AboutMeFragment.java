@@ -1,5 +1,8 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.spyridonsaridakiscvapp.databinding.FragmentHomeBinding;
 
@@ -20,11 +25,13 @@ public class AboutMeFragment extends Fragment {
     private FragmentHomeBinding binding;
 
     public int counter =1;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        clearNotification();
         TextView tv = root.findViewById(R.id.tvAboutMe);
         TextView tvTitle = root.findViewById(R.id.tvTitle);
 
@@ -74,4 +81,11 @@ public class AboutMeFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+    public void clearNotification() {
+        NotificationManager notificationManager = (NotificationManager) getContext()
+                .getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancel(NotificationService.NOTIFICATION_ID);
+    }
+
 }

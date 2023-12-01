@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -15,10 +16,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpyridonSaridakisCvApp"
         tools:targetApi="31">
+        <service
+            android:name=".CloseApplicationService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <service
+            android:name=".NotificationService"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity
             android:name=".CountryInformationActivity"
-            android:label="Country Information"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Country Information" />
         <activity
             android:name=".MapsHostActivity"
             android:exported="false"

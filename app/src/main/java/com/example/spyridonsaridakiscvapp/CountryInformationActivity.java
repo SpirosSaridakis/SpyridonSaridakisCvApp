@@ -3,16 +3,22 @@ package com.example.spyridonsaridakiscvapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 public class CountryInformationActivity extends AppCompatActivity {
+    public LifeCycleHandler handler = new LifeCycleHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_country_information);
+        handler.getContext(getApplicationContext());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            registerActivityLifecycleCallbacks(handler);
+        }
         TextView tvT = findViewById(R.id.tvCountryTitle);
         TextView tvContent = findViewById(R.id.tvCountiresText);
         Intent in = getIntent();
@@ -30,6 +36,9 @@ public class CountryInformationActivity extends AppCompatActivity {
     }
 
     public void backToMap(View v){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            unregisterActivityLifecycleCallbacks(handler);
+        }
         finish();
     }
 }

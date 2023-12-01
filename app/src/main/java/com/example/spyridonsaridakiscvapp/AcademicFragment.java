@@ -1,5 +1,6 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.spyridonsaridakiscvapp.databinding.FragmentGalleryBinding;
 
@@ -18,11 +20,11 @@ public class AcademicFragment extends Fragment {
     public static final int HEIGHT =320;
     public Boolean isCutFull=false;
     public Boolean isTalosFull=false;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
         View uniwa = root.findViewById(R.id.containerUniwa);
         View cut = root.findViewById(R.id.containerCut);
         View talos = root.findViewById(R.id.containerTalos);
