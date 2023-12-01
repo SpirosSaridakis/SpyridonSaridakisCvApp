@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 
 import com.example.spyridonsaridakiscvapp.databinding.ActivityMapsHost2Binding;
+
+import java.util.Locale;
 
 public class MapsHostActivity extends AppCompatActivity {
 
@@ -26,6 +29,8 @@ public class MapsHostActivity extends AppCompatActivity {
 
     private static int countryDisplayed =0;
 
+    TextToSpeech t1;
+
     public LifeCycleHandler handler = new LifeCycleHandler();
 
     @Override
@@ -33,6 +38,14 @@ public class MapsHostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMapsHost2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR){
+                    t1.setLanguage(Locale.UK);
+                }
+            }
+        });
         handler.getContext(getApplicationContext());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             registerActivityLifecycleCallbacks(handler);
@@ -62,9 +75,10 @@ public class MapsHostActivity extends AppCompatActivity {
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Press home to go back to the selection screen", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Press home to go back to the selection screen,or press the three dots for mor information.", Snackbar.LENGTH_LONG)
                         .setAnchorView(R.id.fab)
                         .setAction("Action", null).show();
+                speakNow();
             }
         });
     }
@@ -99,6 +113,10 @@ public class MapsHostActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void speakNow(){
+        t1.speak("Press home to go back to the selection screen,or press the three dots for mor information.", TextToSpeech.QUEUE_FLUSH,null);
     }
 
 

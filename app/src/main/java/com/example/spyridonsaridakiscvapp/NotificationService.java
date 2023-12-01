@@ -13,7 +13,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class NotificationService extends Service {
+
+    private Timer timer = new Timer();
+    private static int count;
+
     public static final int NOTIFICATION_ID = 1;
     public NotificationService() {
     }
@@ -26,7 +33,13 @@ public class NotificationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        sendNotification();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                sendNotification();
+            }
+        },5000);
+
         return super.onStartCommand(intent, flags, startId);
     }
 
