@@ -55,4 +55,14 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_date">Please provide a valid date</string>
+    <string name="invalid_phone">Phone number must be at least 10 digits</string>
+    <string name="invalid_company">You must provide a company name</string>
+    <string name="login_failed">"Login failed"</string>
 </resources>

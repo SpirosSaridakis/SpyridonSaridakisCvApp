@@ -1,6 +1,9 @@
 package com.example.spyridonsaridakiscvapp;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.view.View;
@@ -9,6 +12,9 @@ import android.view.Menu;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -32,6 +38,42 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            // Check if the key exists in the Bundle
+            if (bundle.containsKey("DATE_KEY") && bundle.containsKey("PHONE_KEY") && bundle.containsKey("COMPANY_KEY")) {
+                // Retrieve the username
+                String date = bundle.getString("DATE_KEY");
+                String phone = bundle.getString("PHONE_KEY");
+                String company = bundle.getString("COMPANY_KEY");
+                NotificationChannel channel = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    channel = new NotificationChannel(
+                            "1",
+                            "channel1",
+                            NotificationManager.IMPORTANCE_DEFAULT);
+
+                    //create the notification manager
+                    NotificationManager manager = getSystemService(NotificationManager.class);
+                    manager.createNotificationChannel(channel);
+
+                    //create the notification
+                    NotificationCompat.Builder notification = new NotificationCompat.Builder(this, "1")
+                            .setSmallIcon(android.R.drawable.ic_dialog_email)
+                            .setContentTitle("Dear "+company+", "+ phone)
+                            .setContentText("Thank you for taking an interest in me on "+date+". Im looking forward to hearing from you.")
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                    NotificationManagerCompat notifyAdmin = NotificationManagerCompat.from(this);
+                    if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                    notifyAdmin.notify(1, notification.build());
+                }
+            }
+        }
+
 
         setSupportActionBar(binding.appBarMain.toolbar);
         t1 = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
